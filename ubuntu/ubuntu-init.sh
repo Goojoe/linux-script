@@ -68,7 +68,7 @@ ln -s /usr/local/java/jdk-17.0.4.1/bin/java /usr/bin/java
 java -version
 
 echo "rclone安装"
-axel -a -n 3 https://download.fastgit.org/rclone/rclone/releases/download/v1.59.1/rclone-v1.59.1-linux-amd64.deb
+axel -a -n 3 https://download.nuaa.cf/rclone/rclone/releases/download/v1.59.1/rclone-v1.59.1-linux-amd64.deb
 dpkg -i rclone-v1.59.1-linux-amd64.deb
 rclone version
 
