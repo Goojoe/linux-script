@@ -31,7 +31,7 @@ python3 \
 axel
 
 echo "安装Nodejs"
-curl -sL https://raw.kgithub.com/Goojoe/linux-script/master/ubuntu/ubuntu-init.sh | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 apt update && apt install -y nodejs
 echo "修改npm镜像"
 npm config set registry https://registry.npmmirror.com
