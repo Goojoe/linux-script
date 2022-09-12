@@ -30,28 +30,32 @@ python3 \
 axel \
 aria2 \
 ufw \
-lolcat \
-figlet \
-ruby
+python3-pip \
+python-is-python3
 
-figlet Nodejs Install | lolcat
+
+python -m pip install --upgrade pip
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+
+echo "=====Nodejs Install====="
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 apt update && apt install -y nodejs
-echo "修改npm镜像" | lolcat
+echo "修改npm镜像"
 npm config set registry https://registry.npmmirror.com
 npm config get registry
-echo "安装yarn" | lolcat
+echo "安装yarn"
 npm -g i yarn
-echo "修改yarn镜像" | lolcat
+echo "修改yarn镜像"
 yarn config set registry https://registry.npmmirror.com
 # 验证
 yarn config get registry
 node -v
 npm -v
 yarn -v
-echo "=====Nodejs安装完成=====" | lolcat
+echo "=====Nodejs安装完成====="
 
-figlet Java Install | lolcat
+echo "=====Java Install====="
 axel -a -n 64 https://download.oracle.com/java/17/archive/jdk-17.0.4.1_linux-x64_bin.tar.gz
 #创建安装目录
 mkdir /usr/local/java/
@@ -69,23 +73,23 @@ source /etc/profile
 #添加软连接
 ln -s /usr/local/java/jdk-17.0.4.1/bin/java /usr/bin/java
 java -version
-echo "=====Java安装完成=====" | lolcat
+echo "=====Java安装完成====="
 
-figlet Rclone Install | lolcat
+echo "=====Rclone Install====="
 axel -a -n 3 https://download.nuaa.cf/rclone/rclone/releases/download/v1.59.1/rclone-v1.59.1-linux-amd64.deb
 dpkg -i rclone-v1.59.1-linux-amd64.deb
 rclone version
-echo "=====Rclone安装完成=====" | lolcat
+echo "=====Rclone安装完成====="
 
-figlet Docker Install | lolcat
+echo "=====Docker Install====="
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 echo "启动Docker"
 systemctl start docker
 echo "Docker开机自启"
 systemctl enable docker
 docker version
-echo "=====Docker安装完成=====" | lolcat
-echo '修改Docker 镜像' | lolcat
+echo "=====Docker安装完成====="
+echo '修改Docker 镜像'
 
 
 cat << EOF > /etc/docker/daemon.json
@@ -109,6 +113,5 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd
 
 systemctl restart sshd
 
-echo "SSH Root登录替换完成" | lolcat
-figlet Successful | lolcat
-echo "=============脚本执行完毕=============" | lolcat
+echo "SSH Root登录替换完成"
+echo "=============脚本执行完毕============="
