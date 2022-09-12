@@ -29,7 +29,8 @@ make \
 lrzsz \
 python3 \
 axel \
-aria2
+aria2 \
+ufw
 
 echo "安装Nodejs"
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -76,7 +77,22 @@ rclone version
 # 安装 Docker
 apt remove docker docker-engine docker.io containerd runc -y
 apt update
-curl -sSL https://get.daocloud.io/docker | sh
+apt install -y \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository -y \
+   "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/ \
+  $(lsb_release -cs) \
+  stable"
+
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
 systemctl start docker
 systemctl enable docker
 docker version
