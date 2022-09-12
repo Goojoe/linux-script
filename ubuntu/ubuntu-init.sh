@@ -74,8 +74,8 @@ axel -a -n 3 https://download.nuaa.cf/rclone/rclone/releases/download/v1.59.1/rc
 dpkg -i rclone-v1.59.1-linux-amd64.deb
 rclone version
 
-# 安装 Docker
-apt-get remove docker docker-engine docker.io containerd runc -y
+echo "安装 Docker"
+apt remove docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-engine docker.io containerd runc -y
 apt update
 apt install -y \
     ca-certificates \
@@ -90,10 +90,12 @@ add-apt-repository -y \
   $(lsb_release -cs) \
   stable"
 
-apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
-
+apt update
+echo "安装最后组件"
+apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+echo "启动Docker"
 systemctl start docker
+echo "Docker开机自启"
 systemctl enable docker
 docker version
 echo "=====Docker安装完成====="
