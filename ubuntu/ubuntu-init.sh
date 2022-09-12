@@ -28,10 +28,10 @@ g++ \
 make \
 lrzsz \
 python3 \
-aria2 
+axel
 
 echo "安装Nodejs"
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+curl -sL https://raw.kgithub.com/Goojoe/linux-script/master/ubuntu/ubuntu-init.sh | sudo -E bash -
 apt update && apt install -y nodejs
 echo "修改npm镜像"
 npm config set registry https://registry.npmmirror.com
@@ -47,6 +47,30 @@ npm -v
 yarn -v
 echo "=====Nodejs 安装完成====="
 
+
+echo "安装Java"
+axel -a -n 64 https://download.oracle.com/java/17/archive/jdk-17.0.4.1_linux-x64_bin.tar.gz
+#创建安装目录
+mkdir /usr/local/java/
+#解压至安装目录
+tar -zxvf jdk-17.0.4.1_linux-x64_bin.tar.gz -C /usr/local/java/
+# 环境变量
+cat << EOF >> /etc/profile
+export JAVA_HOME=/usr/local/java/jdk-17.0.4.1
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+EOF
+#使环境变量生效
+source /etc/profile
+#添加软连接
+ln -s /usr/local/java/jdk-17.0.4.1/bin/java /usr/bin/java
+java -version
+
+echo "rclone安装"
+axel -a -n 3 https://download.fastgit.org/rclone/rclone/releases/download/v1.59.1/rclone-v1.59.1-linux-amd64.deb
+dpkg -i rclone-v1.59.1-linux-amd64.deb
+rclone version
 
 # 安装 Docker
 apt remove docker docker-engine docker.io containerd runc -y
