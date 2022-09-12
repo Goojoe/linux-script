@@ -11,7 +11,6 @@ deb-src https://mirrors.nju.edu.cn/ubuntu/ jammy-security main restricted univer
 # deb-src https://mirrors.nju.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse"
 EOF
 
-
 cat /etc/apt/sources.list
 
 apt update
@@ -30,27 +29,29 @@ lrzsz \
 python3 \
 axel \
 aria2 \
-ufw
+ufw \
+lolcat \
+figlet \
+ruby
 
-echo "安装Nodejs"
+figlet Nodejs Install | lolcat
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 apt update && apt install -y nodejs
-echo "修改npm镜像"
+echo "修改npm镜像" | lolcat
 npm config set registry https://registry.npmmirror.com
 npm config get registry
-echo "安装yarn"
+echo "安装yarn" | lolcat
 npm -g i yarn
-echo "修改yarn镜像"
+echo "修改yarn镜像" | lolcat
 yarn config set registry https://registry.npmmirror.com
 # 验证
 yarn config get registry
 node -v
 npm -v
 yarn -v
-echo "=====Nodejs 安装完成====="
+echo "=====Nodejs安装完成=====" | lolcat
 
-
-echo "安装Java"
+figlet Java Install | lolcat
 axel -a -n 64 https://download.oracle.com/java/17/archive/jdk-17.0.4.1_linux-x64_bin.tar.gz
 #创建安装目录
 mkdir /usr/local/java/
@@ -68,13 +69,15 @@ source /etc/profile
 #添加软连接
 ln -s /usr/local/java/jdk-17.0.4.1/bin/java /usr/bin/java
 java -version
+echo "=====Java安装完成=====" | lolcat
 
-echo "rclone安装"
+figlet Rclone Install | lolcat
 axel -a -n 3 https://download.nuaa.cf/rclone/rclone/releases/download/v1.59.1/rclone-v1.59.1-linux-amd64.deb
 dpkg -i rclone-v1.59.1-linux-amd64.deb
 rclone version
+echo "=====Rclone安装完成=====" | lolcat
 
-echo "安装 Docker"
+figlet Docker Install | lolcat
 apt remove docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-engine docker.io containerd runc -y
 apt update
 apt install -y \
@@ -98,8 +101,8 @@ systemctl start docker
 echo "Docker开机自启"
 systemctl enable docker
 docker version
-echo "=====Docker安装完成====="
-echo '修改Docker 镜像'
+echo "=====Docker安装完成=====" | lolcat
+echo '修改Docker 镜像' | lolcat
 
 
 cat << EOF > /etc/docker/daemon.json
@@ -123,5 +126,6 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd
 
 systemctl restart sshd
 
-echo "SSH Root登录替换完成"
-echo "=============脚本执行完毕============="
+echo "SSH Root登录替换完成" | lolcat
+figlet Successful | lolcat
+echo "=============脚本执行完毕=============" | lolcat
