@@ -78,24 +78,7 @@ rclone version
 echo "=====Rclone安装完成=====" | lolcat
 
 figlet Docker Install | lolcat
-apt remove docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-engine docker.io containerd runc -y
-apt update
-apt install -y \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-
-mkdir -p /etc/apt/keyrings
-curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-add-apt-repository -y \
-   "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/ \
-  $(lsb_release -cs) \
-  stable"
-
-apt update
-echo "安装最后组件"
-apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 echo "启动Docker"
 systemctl start docker
 echo "Docker开机自启"
