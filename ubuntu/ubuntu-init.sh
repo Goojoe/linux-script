@@ -28,7 +28,8 @@ g++ \
 make \
 lrzsz \
 python3 \
-axel
+axel \
+aria2
 
 echo "安装Nodejs"
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
