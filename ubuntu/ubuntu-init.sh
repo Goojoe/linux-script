@@ -75,7 +75,7 @@ dpkg -i rclone-v1.59.1-linux-amd64.deb
 rclone version
 
 # 安装 Docker
-apt remove docker docker-engine docker.io containerd runc -y
+apt-get remove docker docker-engine docker.io containerd runc -y
 apt update
 apt install -y \
     ca-certificates \
