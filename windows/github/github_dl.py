@@ -2,12 +2,17 @@ import requests
 from tqdm import tqdm
 import os
 from RainbowPrint import RainbowPrint as rp
+import configparser as cp
 
+config_path = "./config.ini"
+config = cp.ConfigParser()
+config.read(config_path,"utf-8")
 proxies = {
-    "http": "127.0.0.1:7891",
-    "https": "127.0.0.1:7891"
+    "http": config.get("proxy","http"),
+    "https": config.get("proxy","https")
 }
 
+download_path = config.get("download","download_path")
 
 def http_dl(file_name, url):
 
@@ -45,14 +50,14 @@ def http_dl(file_name, url):
 
 
 def github_dl(author,releases_num,file_name):
-
+    if not os.path.exists(download_path):
+        os.mkdir(download_path)
     github_res = requests.get(f"https://api.github.com/repos/{author}/releases/latest", proxies=proxies,verify=False,allow_redirects=True)
     # 获取json
     github_data = github_res.json()
     # 解析URL
     github_url = github_data["assets"][releases_num]["browser_download_url"]
     
-    proxy_url = github_url.replace("https://github.com", "https://ghproxy.goojoe.top/https://github.com");
-    print(proxy_url)
+    proxy_url = github_url.replace("https://github.com", "https://ghproxy.goojoe.top/https://github.com")
     # 下载
-    http_dl(file_name,proxy_url)
+    http_dl(download_path + "/" + file_name,proxy_url)
