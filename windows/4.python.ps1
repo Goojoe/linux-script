@@ -1,0 +1,1 @@
+aria2c.exe -s 64 "https://mirror.bjtu.edu.cn/python/3.10.7/python-3.10.7-amd64.exe" -o python.exe
