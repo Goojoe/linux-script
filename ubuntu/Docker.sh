@@ -1,9 +1,5 @@
 echo "=====Docker Install====="
-axel -a -n 64 "https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce-cli_20.10.18~3-0~ubuntu-jammy_amd64.deb"
-
-dpkg -i docker-ce-cli_20.10.18~3-0~ubuntu-jammy_amd64.deb
-echo "启动Docker"
-systemctl start docker
+curl -fsSL https://get.docker.com | bash -s docker 
 echo "Docker开机自启"
 systemctl enable docker
 docker version
