@@ -20,13 +20,13 @@ wget -O - https://raw.iqiq.io/Goojoe/linux-script/master/ubuntu/Java17.sh | bash
 
 ## Nodejs
 
-```
+```bash
 wget -O - https://raw.iqiq.io/Goojoe/linux-script/master/ubuntu/nodejs.sh | bash
 ```
 
 ## Rclone
 
-```
+```bash
 wget -O - https://raw.iqiq.io/Goojoe/linux-script/master/ubuntu/rclone.sh | bash
 ```
 
