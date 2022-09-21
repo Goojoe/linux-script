@@ -16,4 +16,5 @@ axel \
 aria2 \
 ufw \
 python3-pip \
-python-is-python3
+python-is-python3 \
+bash-completion 
