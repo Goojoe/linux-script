@@ -32,5 +32,5 @@ wget -O - https://raw.iqiq.io/Goojoe/linux-script/master/ubuntu/rclone.sh | bash
 
 ## v2raya
 ```bash
-wget -O - https://raw.iqiq.io/Goojoe/linux-script/master/ubuntu/rclone.sh | bash
+wget -O - https://raw.iqiq.io/Goojoe/linux-script/master/ubuntu/v2raya.sh | bash
 ```
