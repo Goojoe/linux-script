@@ -3,7 +3,7 @@ apt install net-tools xsel
 ip=`ip a | grep '192.168.*.*' | cut -c10-23`
 port=":2017"
 echo "安装xray内核"
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+bash -c "$(curl -L https://raw.iqiq.io/Goojoe/linux-script/master/ubuntu/xray.sh)" @ install
 echo "启动服务"
 sudo systemctl start xray.service
 sudo systemctl enable xray.service
