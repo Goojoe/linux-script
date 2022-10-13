@@ -9,7 +9,7 @@ sudo systemctl start xray.service
 sudo systemctl enable xray.service
 
 wget https://download.fastgit.org/v2rayA/v2rayA/releases/download/v1.5.9.1698.1/installer_debian_amd64_1.5.9.1698.1.deb
-apt install ./installer_debian_amd64_*.deb
+apt install ./installer_debian_*.deb
 sudo systemctl start v2raya.service
 sudo systemctl enable v2raya.service
 curl -L localhost:2017
